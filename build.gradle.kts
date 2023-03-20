@@ -11,19 +11,34 @@ val shineFrameworkVersion = "0.3.2-SNAPSHOT"
 
 allprojects {
     repositories {
+        maven { url = uri("file:///E:\\environment\\maven\\maven-repository") }
         mavenLocal()
         mavenCentral()
-        maven {
-            url = uri("https://maven.pkg.github.com/SilenceShine/shine-framework")
-        }
+        maven { url = uri("https://maven.pkg.github.com/SilenceShine/shine-framework") }
+        maven { url = uri("https://plugins.gradle.org/m2/") }
     }
 }
 
-dependencies {
-    implementation(platform("io.github.SilenceShine:shine-framework-spring:${shineFrameworkVersion}"))
-}
+subprojects {
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    apply(plugin = "java")
+    apply(plugin = "kotlin")
+
+    dependencies {
+        implementation(platform("io.github.SilenceShine:shine-framework-spring:${shineFrameworkVersion}"))
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.10")
+    }
+
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
+
 }

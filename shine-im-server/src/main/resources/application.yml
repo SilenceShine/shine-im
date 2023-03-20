@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: shine-im-server
+  profiles:
+    active: shupian
+  rsocket:
+    server:
+      port: 10001
+
+logging:
+  level:
+    root: debug
+    io.github.SilenceShine.shine: debug
+    com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder: debug
