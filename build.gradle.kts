@@ -7,15 +7,15 @@ plugins {
 group = "io.github.SilenceShine"
 version = "0.0.1-SNAPSHOT"
 
-val shineFrameworkVersion = "0.3.2-SNAPSHOT"
-
 allprojects {
     repositories {
-        maven { url = uri("file:///E:\\environment\\maven\\maven-repository") }
         mavenLocal()
         mavenCentral()
-        maven { url = uri("https://maven.pkg.github.com/SilenceShine/shine-framework") }
+        maven { url = uri("file:///E:\\environment\\maven\\maven-repository") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://repo.maven.apache.org/maven2") }
         maven { url = uri("https://plugins.gradle.org/m2/") }
+        maven { url = uri("https://maven.pkg.github.com/SilenceShine/shine-framework") }
     }
 }
 
@@ -25,8 +25,10 @@ subprojects {
     apply(plugin = "kotlin")
 
     dependencies {
-        implementation(platform("io.github.SilenceShine:shine-framework-spring:${shineFrameworkVersion}"))
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.10")
+        implementation(platform("io.github.SilenceShine:shine-framework-spring:${property("shineFrameworkVersion")}"))
+        implementation(platform("com.alibaba.rsocket:alibaba-rsocket-broker-parent:${property("alibabaRsocketBrokerParent")}"))
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${property("kotlinx")}")
+        implementation("org.jetbrains.kotlin:kotlin-reflect:${property("kotlin")}")
     }
 
     kotlin {
