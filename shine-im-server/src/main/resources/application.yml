@@ -1,0 +1,32 @@
+server:
+  port: 8111
+
+spring:
+  application:
+    name: shine-im-server
+  profiles:
+    active: shupian
+
+rsocket:
+  port: 10001
+  brokers: tcp://10.100.163.18:9998
+  jwt-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaGluZS1pbS1zZXJ2ZXIiLCJhdWQiOlsiZSIsImgiLCJpIiwibiIsInMiXSwic2FzIjpbImQiLCJlIiwiZiIsImEiLCJ1IiwibCIsInQiXSwicm9sZXMiOlsiIl0sImlzcyI6IlJTb2NrZXRCcm9rZXIiLCJpZCI6Ijk3NDcxNDFiLTlmNTEtNDhmMy05MTU4LTJmNjdkZmZlZWFhYyIsIm9yZ3MiOlsiIl0sImlhdCI6MTY3OTM4OTI4MSwiYXV0aG9yaXRpZXMiOlsiIl19.HLsrBN_fBeFeIb8BUjph-wJz295EPrpm9LFCnNYhn4ariS9Ertg9RHOogjGclCa2T8oYC-B27DzDo1-16FX-gfXsDDbY7oYfnJ_f-fmAXQAm_aMDLLd-Z05fFBoynuGtcJmQmifKRj8LbRXia7_A7l2iznpQb4osB0SERq-HZp-L_Me6ev-PT8UvGFKT8O3yu1b73wkUWT8CHfuQZn_GOLXIepYE_jpYIRKOQ3QxeprLTK3PugtdU3sRC77tq9RmQ-wTeIDCj4lD9NeBtcc9ObPwzmSoY4uP0iJ_8tcZwq44nkSwnFsDEyG6rm6hpjKRCCNA1mokS2UW5TzMqN-ukQ
+  version: v0.0.1
+  metadata:
+    test: test
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    root: debug
+    io.github.SilenceShine.shine: debug
+    com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder: debug
